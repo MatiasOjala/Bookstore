@@ -1,22 +1,38 @@
 package s22.Bookstore.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import s22.Bookstore.domain.Book;
+import s22.Bookstore.domain.BookRepository;
 
 @Controller
 public class BookstoreController {
+		@Autowired
+		private BookRepository repository;
 	
-		@GetMapping("/index")
-		public String home(@RequestParam(name="title")String title,
-				@RequestParam(name="author") String author,
-				@RequestParam(name="year") String year,
-				@RequestParam(name="isbn") String isbn,
-				@RequestParam(name="price") String price,
-				Model model){
-			return "index";
+		@RequestMapping(value= {"/", "/booklist"})
+		public String bookList(Model model) {
+		model.addAttribute("book", repository.findAll());
+		return "booklist";
 		}
-
-			
+		@RequestMapping(value= "/add")
+		public String addBook(Model model) {
+			model.addAttribute("book", new Book());
+			return "addbook";
+		}
+		@RequestMapping(value= "/save", method = RequestMethod.POST)
+		public String save(Book book) {
+			repository.save(book);
+			return "redirect:booklist";
+		}
+		@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	    public String deleteBook(@PathVariable("id") Long Id, Model model) {
+	    	repository.deleteById(Id);
+	        return "redirect:../booklist";
+	    } 
 }
