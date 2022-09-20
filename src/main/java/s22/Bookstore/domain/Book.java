@@ -18,13 +18,20 @@ public class Book {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Book(String title, String author, String isbn, int bookYear, double price) {
+	public Book(Long id, String title, String author, String isbn, int bookYear, double price) {
 		super();
+		this.id = id;
 		this.title = title;
 		this.author = author;
 		this.isbn = isbn;
 		this.bookYear = bookYear;
 		this.price = price;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getTitle() {
 		return title;
@@ -56,5 +63,6 @@ public class Book {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
 
 }

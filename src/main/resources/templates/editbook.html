@@ -5,29 +5,25 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Edit car</h1>
+	<h1>Edit book</h1>
 	<div>
-	<form th:object="${editCar}" th:action="@{/saveCar}" action="#" method="post">
+	<form th:object="${editbook}" th:action="@{/save}" action="#" method="post">
 		  	<input type="hidden" id="id" th:field="*{id}" />
 		  	<div>
-		  	<label>Brand</label>
-			<input type="text" th:field="*{brand}" />
+		  	<label>Title</label>
+			<input type="text" th:field="*{title}" />
 			</div>
 			<div>
-		  	<label>Model</label>
-		  	<input type="text" th:field="*{model}" />
+		  	<label>Author</label>
+		  	<input type="text" th:field="*{author}" />
 			</div>
 			<div>
-		  	<label>Color</label>
-			<input type="text" th:field="*{color}" />
+		  	<label>Isbn</label>
+			<input type="text" th:field="*{isbn}" />
 			</div>
 			<div>
-		  	<label>Register number</label>
-			<input type="text" th:field="*{registerNumber}" />
-			</div>
-			<div>		
-		  	<label>Year Of Construction</label>
-			<input type="number" th:field="*{yearOfConstruction}" />
+		  	<label>Year</label>
+			<input type="text" th:field="*{bookYear}" />
 			</div>
 			<div>			
 		  	<label>Price</label>
