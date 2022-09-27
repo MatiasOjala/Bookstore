@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Server Programming</title>
+<title>Booklist</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
@@ -14,6 +14,7 @@ xmlns:th="http://www.thymeleaf.org">
    			<th>Isbn</th>
    			<th>Year</th>
    			<th>Price</th>
+   			<th>Category</th>
    	</tr>
         <tr th:each="book : ${book}">
             <td th:text="${book.title}"></td>
@@ -21,6 +22,7 @@ xmlns:th="http://www.thymeleaf.org">
             <td th:text="${book.isbn}"></td>
             <td th:text="${book.bookYear}"></td>
             <td th:text="${book.price}"></td>
+            <td th:text="${book.category.name}"></td>
             <td><a th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>
             <td><a th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
         </tr>
