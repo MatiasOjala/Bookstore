@@ -23,10 +23,14 @@ xmlns:th="http://www.thymeleaf.org">
             <td th:text="${book.bookYear}"></td>
             <td th:text="${book.price}"></td>
             <td th:text="${book.category.name}"></td>
-            <td><a th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>
-            <td><a th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
+            <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>
+            <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
         </tr>
     </table>
+<br>
 <a href="/add" class="btn btn-primary">Add book</a>
+<br>
+<br>
+<a href="/mainpage" class="btn btn-primary">Main page</a>
 </body>
 </html>
